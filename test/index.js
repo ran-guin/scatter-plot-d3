@@ -1,7 +1,6 @@
-var chai = require('chai');  
-var expect = chai.expect;
+import { expect } from 'chai';  
 
-const simpleMath = require('../dist');
+import simpleMath from '../dist/index.js';
 
 describe('Example Test', () => {
   describe('#addTwoNum()', () => {

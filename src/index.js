@@ -8,7 +8,7 @@ function addThreeNum(num1, num2, num3) {
     return total;
 }
 
-module.exports = {
+export default {
     addTwoNum,
     addThreeNum,
 }
