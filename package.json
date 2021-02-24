@@ -17,6 +17,7 @@
   },
   "homepage": "https://gitlab.com/ran-guin/npm-package-template#readme",
   "main": "./dist/index.js",
+  "type": "module",
   "scripts": {
     "build": "make buildplus",
     "prepublish": "npm run build",
