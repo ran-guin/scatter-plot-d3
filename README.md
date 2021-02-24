@@ -2,7 +2,7 @@
 
 ## Getting started
 
-- `git clone https://github.com/ran-guin/npm-package-template`
+- `git clone https://github.com/ran-guin/npm-package-template <your-pkg-name>`
 
 - `cd npm-package-template`
 
@@ -34,6 +34,8 @@
 - `npm run build`
 - recursively add tests & edit as required to ensure working...
 
-### Add to npm 
+### Add to npm
+
+
 
 
