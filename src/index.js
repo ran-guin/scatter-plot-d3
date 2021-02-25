@@ -1,6 +1,12 @@
 import * as d3 from 'd3'
 import d3Svg from 'svg-d3'
 
+function checkDefaults (options) {
+  const set = d3Svg.setOptions('bar', options)
+  console.log('default settings: ' + JSON.stringify(set))
+  return set
+}
+
 function addPie(options) {   
   console.log('add pie chart: ' + JSON.stringify(options))
   var svg = options.svg || this.initSvg(options)
@@ -64,6 +70,12 @@ function addPie(options) {
 
   this.addLabels(options)
   console.log('drew pie')
+
+  if (options.embedData) {
+    console.log('embed data into element: ' + options.embedData)
+    d3Svg.embedData(data, options.embedData)
+  }
+
   return {records: data.length, max: set.maxValue }
 }
 
@@ -217,8 +229,4 @@ function addLabels (options) {
     return {options: options}
   }
 
-  function test () {
-    return 'ok'
-  }
-
-  export default { test, addPie, addArcs, addLabels };
+  export default { checkDefaults, addPie, addArcs, addLabels };

@@ -1,41 +1,44 @@
-# Starting point for building npm package
+# pie-chart-d3
 
-## Getting started
+# Package for Easily Plotting Pie Charts using D3
 
-- `git clone https://github.com/ran-guin/npm-package-template <your-pkg-name>`
+# Basic Usage:
 
-- `cd npm-package-template`
+- `npm install -S pie-chart-d3`
 
-- `npm install` (to install mocha / chai for testing purposes)
+- import in code
+  - `import 'd3Pie from 'pie-chart-d3'`
+- Add canvas element to html page (d3Canvas is the default id expected)
+  - `<div id='#d3Canvas' />`
 
-- `npm run build` (test to make sure it is working out of the box)
+- Call addPie
+  - `const data_example = [{country: 'USA', gdp: 20.8}, {country: 'China', gdp: 14.9}, {country: 'Japan', gdp: 4.9}, {country: 'Germany', gdp: 3.8}, {country: 'France', gdp: 2.6}]`
+  - `d3Pie.addPie({data: data})`
 
-## Included
+  # Options:
 
-- default index.js src file - (overwrite with your own code)
-- default index.js test file - (overwrite with your own code)
-- Makefile to execute build to 'dist' directory
-- default LICENSE file (ISC) .... change as required...
+- specify canvas size (defaults to 900 x 600)
+  - (automatically adjusts size to fit canvas)
+  - `d3Pie({data: data, canvasHeight: 500, canvasWidth: 800})`
 
-## Directions
+- specify orientation (defaults to vertical Pie chart)
+  - (automatically adjusts size to fit canvas)
+  - `d3Pie({data: data, orientation: "horizontal"})`
 
-### Setup (to adapt this template for your own use)
-- reset url for your own repository
-  - `git remote set_url origin 'https:github.com/<you>/<pkgName>`
+- specify axis labels
+  - (automatically adjusts size to fit canvas)
+  - `d3Pie({data: data, xaxis: 'Country', yaxis: 'GDP ($USD in millions)'})`
 
-- update package.json file (*everything above "main" specification*)
-- add your own name to the LICENSE.md file
+- specify scale
+  - (overrides auto-scaling that fits plot to canvas size)
+  - `d3Pie({data: data, scale: 10})`
 
-- (optionally save your own custom version of this template under your own repository)
+- check default settings
+  - `var defaults = d3Pie.checkDefaults()`
+  - this allows you to check values like 'scale', 'maxValue' etc. if you have customized the canvas size and/or scaling
+  - `var defaults = d3Pie.checkDefaults({data: data, scale: 10, canvasHeight: 500, canvasWidth: 800})`
 
-- add index.js file(s) to src/ directory
-- add index.js file(s) to test/ directory (optional but recommended)
-- `npm install -S ...` (install 3rd party packages as required)
-- `npm run build`
-- recursively add tests & edit as required to ensure working...
-
-### Add to npm
-
-
-
-
+- embed data table in page
+  - add empty element in html
+  - `<div#embedDataHere />`
+    - `d3Pie.addPie({data: data, embedData: "embedDataHere"})`

@@ -1,6 +1,6 @@
 {
-  "name": "test",
-  "version": "1.0.0",
+  "name": "pie-chart-d3",
+  "version": "1.0.1",
   "description": "tool for generating simple pie charts using d3",
   "author": "Ran Guin <ran.guin@gmail.com>",
   "keywords": [
@@ -26,12 +26,13 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
     "chai": "^4.3.0",
     "mocha": "^8.3.0"
   },
   "dependencies": {
-    "babel-cli": "^6.26.0",
     "d3": "^6.5.0",
-    "svg-d3": "^1.0.0"
+    "svg-d3": "^1.*"
   }
 }
