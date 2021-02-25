@@ -1,22 +1,23 @@
 {
-  "name": "pie-chart-d3",
-  "version": "1.0.1",
-  "description": "tool for generating simple pie charts using d3",
+  "name": "scatter-plot-d3",
+  "version": "1.0.0",
+  "description": "tool for generating simple scatter plots using d3",
   "author": "Ran Guin <ran.guin@gmail.com>",
   "keywords": [
     "data",
     "visualization",
-    "pie",
+    "scatter",
+    "line",
     "chart"
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/ran-guin/pie-chart-d3.git"
+    "url": "https://gitlab.com/ran-guin/scatter-plot-d3.git"
   },
   "bugs": {
-    "url": "https://gitlab.com/ran-guin/pie-chart-d3/issues"
+    "url": "https://gitlab.com/ran-guin/scatter-plot-d3/issues"
   },
-  "homepage": "https://gitlab.com/ran-guin/pie-chart-d3#readme",
+  "homepage": "https://gitlab.com/ran-guin/scatter-plot-d3#readme",
   "main": "./dist/index.js",
   "type": "module",
   "scripts": {
