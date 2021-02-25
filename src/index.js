@@ -31,6 +31,7 @@ function addScatter(options) {
     .append("rect")
 
   console.log('Scatter: ' + JSON.stringify(data))
+  var ptSize = set.ptSize || 4
 
   data.map(d => {
     console.log('X: ' + set.xCol + ': ' + d[set.xCol] + ' x ' + set.scaleX + ' = ' + d[set.xCol] * set.scaleX)
@@ -38,10 +39,10 @@ function addScatter(options) {
   })
 
   scatter
-    .attr('x', (d) => d[set.xCol] * set.scaleX)
-    .attr('y', (d) => set.height - set.bottomMargin - d[set.yCol] * set.scaleY)
-    .attr('height', 20)
-    .attr('width', 20)
+    .attr('x', (d) => set.leftMargin + d[set.xCol] * set.scaleX - ptSize / 2)
+    .attr('y', (d) => set.height - set.bottomMargin - d[set.yCol] * set.scaleY - ptSize/2)
+    .attr('height', ptSize)
+    .attr('width', ptSize)
     .attr('fill', (d, i) => color(i))
 
   scatter
@@ -101,15 +102,45 @@ function addScatter(options) {
 
   this.addLabels(options)
 
+  if (options.line || options.curve) {
+    this.addLine(options)
+  }
+
   if (options.embedData) {
     console.log('embed data into element: ' + options.embedData)
     d3Svg.embedData(data, options.embedData)
   }
-  
+
   // console.log('drew pie')
   return {records: data.length, max: set.maxValue }
 }
 
+function addLine (options) {
+  var svg = options.svg
+  var data = options.data
+  var set = d3Svg.setOptions('scatter', options)
+
+  var sorted = data.sort((a, b) => {
+    return parseFloat(a[set.xCol]) - parseFloat(b[set.xCol]);
+  });
+
+  var ptSize = set.ptSize || 5
+  var color = set.color || 'green' 
+
+  var Gen = d3.line() 
+    .x((d) => set.leftMargin + d[set.xCol] * set.scaleX) 
+    .y((d) => set.height - set.bottomMargin - d[set.yCol] * set.scaleY) 
+    
+  if (options.curve) {
+    Gen.curve(d3.curveBasis); 
+  }
+
+  svg 
+    .append("path") 
+    .attr("d", Gen(sorted)) 
+    .attr("fill", "none") 
+    .attr("stroke", color); 
+}
 
 function addLabels (options) {
   var set = d3Svg.setOptions('pie', options)  // uses bar options for spacing 

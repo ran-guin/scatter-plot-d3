@@ -1,6 +1,6 @@
 {
   "name": "scatter-plot-d3",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "tool for generating simple scatter plots using d3",
   "author": "Ran Guin <ran.guin@gmail.com>",
   "keywords": [
